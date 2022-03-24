@@ -14,7 +14,7 @@ const Home: React.FC = () => {
             .then((res) => {
                 setData(res.data.results)
             })
-    }, [])
+    }, [suggest])
 
     const fetchMoreData = () => {
         UseFetch(`pokemon?limit=10&offset=${offset + 10}`)
@@ -66,10 +66,9 @@ const Home: React.FC = () => {
             <InfiniteScroll
                 dataLength={data.length}
                 next={fetchMoreData}
-                style={{ display: 'flex', flexDirection: 'column-reverse' }} //To put endMessage and loader to the top.
-                // inverse={true} //
+                style={{ display: 'flex', flexDirection: 'column-reverse' }}
                 hasMore={true}
-                loader={<h4>Loading...</h4>}
+                loader={null}
                 scrollableTarget="scrollableDiv"
             >
             </InfiniteScroll>

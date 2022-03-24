@@ -38,7 +38,7 @@ export default function generateColor(color: string) {
     } else if (color === "water") {
         takeColor = '#AFD9FD'
     } else {
-        takeColor = 'gray'
+        takeColor = '#d4d4d4'
     }
 
     return takeColor

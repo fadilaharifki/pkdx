@@ -15,7 +15,7 @@ export default function Card({ data }: any) {
             .then((res) => {
                 setPoke(res.data)
             })
-    }, [])
+    }, [data])
 
     const toPageDetail = () => {
         navigate(`/pokemon/${data.name}`, { state: data.name })
@@ -23,7 +23,7 @@ export default function Card({ data }: any) {
 
     return (
         <CardPoke color={color} onClick={toPageDetail}>
-            <Img src={poke?.sprites?.front_default} alt="name pokemon" />
+            <Img src={poke?.sprites?.other.home.front_default} alt="name pokemon" />
             <div>
                 <TitleCard>{data.name}</TitleCard>
                 <List>
