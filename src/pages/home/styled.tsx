@@ -115,7 +115,6 @@ export const TitleDetail = styled.div`
 
 export const Layout = styled.div`
     border-radius: 20px 20px 0 0;
-    height: 100vh;
     padding: 20px;
     background:white;
 `
@@ -180,7 +179,6 @@ export const TitleStat = styled.div`
 `
 
 export const ImgAnimate = styled.img`
-    // display:flex;
     potition: fixed;
 `
 

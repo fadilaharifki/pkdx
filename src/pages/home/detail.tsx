@@ -38,7 +38,7 @@ export default function Detail() {
                     </List>
                 </div>
                 <ContainerImage>
-                    <ImgAnimate src={data?.sprites?.other?.["official-artwork"].front_default} width={150} alt="animate" />
+                    <ImgAnimate src={data?.sprites?.other?.["official-artwork"].front_default} width={350} alt="animate" />
                 </ContainerImage>
             </LayoutTop>
             <Layout>
