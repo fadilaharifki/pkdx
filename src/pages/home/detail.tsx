@@ -15,13 +15,12 @@ export default function Detail() {
     const [flagAbility, setFlagAbility] = useState(false)
 
     useEffect(() => {
-        UseFetch(`pokemon/${location.state}`)
-            .then((res) => {
-                setData(res.data)
-            })
-            .catch((err) => {
+        const detail = async () => {
+            const res = await UseFetch(`pokemon/${location.state}`)
+            setData(res.data)
+        }
 
-            })
+        detail()
     }, [])
 
     return (
@@ -40,7 +39,7 @@ export default function Detail() {
                             }
                         </List>
                     </div>
-                    <AiOutlineClose onClick={() => navigate('/')} size={25} style={{ cursor: "pointer" }} />
+                    <AiOutlineClose onClick={() => navigate(-1)} size={25} style={{ cursor: "pointer" }} />
                 </Top>
                 <ContainerImage>
                     <ImgAnimate src={data?.sprites?.other?.["official-artwork"].front_default} width={350} alt="animate" />

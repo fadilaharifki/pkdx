@@ -3,32 +3,38 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import React, { useEffect, useState } from "react";
 import { UseFetch } from "../../utils/pokemonContext";
 import Card from "./card";
+import CardSkeleton from "../../components/skeleton/card";
 
 const Home: React.FC = () => {
     // const [data, setData] = useState<any>([])
     const [data, setData] = useState<any>(JSON.parse(`${localStorage.getItem('_cap_network')}`) ? [] : JSON.parse(`${localStorage.getItem('_cap_pokemon')}`))
     // const [daats, setDatas] = useState<any>(JSON.parse(`${localStorage.getItem('_cap_network')}`) ? true : false)
-    // console.log(daats, 'daats');
+    // console.log(data, 'daats');
 
     const [offset, setOffset] = useState(0)
     const [suggest, setSuggest] = useState<any>([])
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-        UseFetch(`pokemon?limit=10&offset=0`)
-            .then((res) => {
+        const fetchData = async () => {
+            try {
+                const res = await UseFetch(`pokemon?limit=10&offset=0`)
                 setData(res.data.results)
-            }).catch((err) => {
-
-            })
+            } catch (error) {
+                setIsLoading(true)
+            }
+        }
+        fetchData()
     }, [suggest])
 
     const fetchMoreData = () => {
-        console.log('FADIL');
-
         UseFetch(`pokemon?limit=10&offset=${offset + 10}`)
             .then((res) => {
                 setOffset(offset + 10)
                 setData([...data, ...res.data.results])
+            })
+            .catch((err) => {
+                setIsLoading(true)
             })
 
     }
@@ -49,6 +55,7 @@ const Home: React.FC = () => {
                 <Input onChange={handleSearch} placeholder="Search pokemon" type="text" />
             </ContainerSearch>
             <Text>Pokédex ({suggest.length ? suggest.length : data.length})</Text>
+            <CardSkeleton loading={isLoading} />
             {
                 suggest.length ? (
                     <ContainerCard>
@@ -77,7 +84,8 @@ const Home: React.FC = () => {
                 next={fetchMoreData}
                 style={{ display: 'flex', flexDirection: 'column-reverse' }}
                 hasMore={true}
-                loader={null}
+                loader={data.length === 1126 ? null : <CardSkeleton loading={true} />
+                }
                 scrollableTarget="scrollableDiv"
             >
             </InfiniteScroll>
