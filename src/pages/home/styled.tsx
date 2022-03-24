@@ -118,13 +118,19 @@ export const Layout = styled.div`
     height: 100vh;
     padding: 20px;
     background:white;
-    
+`
+export const NavBarBottom = styled.div`
+display:flex;
+flex-direction:row;
 `
 
 export const TitleBottom = styled.div`
     text-transform: uppercase;
     font-weight:bold;
-    margin: 10px 0;
+    margin: 20px 0;
+    margin-right: 10px;
+    color: ${(props) => props.color};
+    cursor:pointer;
     @media screen and (max-width: 374px) {
         font-size:13px;
     }
@@ -186,4 +192,22 @@ export const ContainerImage = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: center;
+`
+
+export const PositionAbility = styled.div`
+    margin-right:10px;
+    border-radius:10px;
+    background: #ededed;
+    padding: 5px 10px;
+    @media screen and (max-width: 374px) {
+        font-size:13px;
+    }
+`
+
+export const ContainerAbility = styled.div`
+    display: flex;  
+    flex-direction:row;
+    justify-content: start;
+    align-items:center;
+    width: 100%;
 `
