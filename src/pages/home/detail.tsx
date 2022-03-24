@@ -15,7 +15,6 @@ export default function Detail() {
     useEffect(() => {
         UseFetch(`pokemon/${location?.state}`)
             .then((res) => {
-                console.log(res.data);
                 setData(res.data)
             })
     }, [])
