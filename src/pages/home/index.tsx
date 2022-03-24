@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { UseFetch } from "../../utils/pokemonContext";
 import Card from "./card";
 import CardSkeleton from "../../components/skeleton/card";
+import ModeOffline from "../../components/offlineMode";
 
 const Home: React.FC = () => {
     // const [data, setData] = useState<any>([])
@@ -89,7 +90,9 @@ const Home: React.FC = () => {
                 scrollableTarget="scrollableDiv"
             >
             </InfiniteScroll>
-
+            {
+                JSON.parse(`${localStorage.getItem('_cap_network')}`) === false && <ModeOffline />
+            }
         </Section>
     )
 }
