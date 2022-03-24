@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 import { UseFetch } from '../../utils/pokemonContext'
-import { ContainerDetail, List, Type, TitleDetail, Layout, LayoutTop, TitleBottom, ContainerAbility, PositionAbility, NavBarBottom, ImgAnimate, ContainerImage, ContainerChart, TitleStat, TitleChart, Bar, Bar2, NumberChart } from './styled'
+import { ContainerDetail, List, Type, TitleDetail, Layout, LayoutTop, TitleBottom, ContainerAbility, PositionAbility, NavBarBottom, ImgAnimate, ContainerImage, ContainerChart, TitleStat, TitleChart, Bar, Bar2, NumberChart, Top } from './styled'
 import { useLocation } from 'react-router-dom';
 import generateColor from '../../utils/generateColor';
 import generateColorType from '../../utils/generateColorType';
+import { AiOutlineClose } from 'react-icons/ai'
+import { useNavigate } from 'react-router-dom'
 
 export default function Detail() {
+    const navigate = useNavigate()
     const location: any = useLocation();
     const [data, setData] = useState<any>()
     const [flagStat, setFlagStat] = useState(true)
@@ -24,19 +27,21 @@ export default function Detail() {
     return (
         <ContainerDetail color={generateColor(data?.types[0]?.type.name)}>
             <LayoutTop>
-                <div>
-                    <TitleDetail>{data?.name}</TitleDetail>
-
-                    <List>
-                        {
-                            data?.types?.map((e: any, i: number) => {
-                                return (
-                                    <Type color={generateColorType(e.type.name)} key={i}>{e.type.name}</Type>
-                                )
-                            })
-                        }
-                    </List>
-                </div>
+                <Top>
+                    <div>
+                        <TitleDetail>{data?.name}</TitleDetail>
+                        <List>
+                            {
+                                data?.types?.map((e: any, i: number) => {
+                                    return (
+                                        <Type color={generateColorType(e.type.name)} key={i}>{e.type.name}</Type>
+                                    )
+                                })
+                            }
+                        </List>
+                    </div>
+                    <AiOutlineClose onClick={() => navigate('/')} size={25} style={{ cursor: "pointer" }} />
+                </Top>
                 <ContainerImage>
                     <ImgAnimate src={data?.sprites?.other?.["official-artwork"].front_default} width={350} alt="animate" />
                 </ContainerImage>

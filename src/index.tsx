@@ -5,12 +5,15 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom'
+import { Network } from './utils/pokemonContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Network>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Network>
   </React.StrictMode>,
   document.getElementById('root')
 );

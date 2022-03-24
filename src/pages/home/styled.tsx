@@ -209,3 +209,8 @@ export const ContainerAbility = styled.div`
     align-items:center;
     width: 100%;
 `
+export const Top = styled.div`
+    display: flex;  
+    flex-direction:row;
+    justify-content: space-between;
+`

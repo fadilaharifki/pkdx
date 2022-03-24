@@ -5,7 +5,11 @@ import { UseFetch } from "../../utils/pokemonContext";
 import Card from "./card";
 
 const Home: React.FC = () => {
-    const [data, setData] = useState<any>([])
+    // const [data, setData] = useState<any>([])
+    const [data, setData] = useState<any>(JSON.parse(`${localStorage.getItem('_cap_network')}`) ? [] : JSON.parse(`${localStorage.getItem('_cap_pokemon')}`))
+    // const [daats, setDatas] = useState<any>(JSON.parse(`${localStorage.getItem('_cap_network')}`) ? true : false)
+    // console.log(daats, 'daats');
+
     const [offset, setOffset] = useState(0)
     const [suggest, setSuggest] = useState<any>([])
 
@@ -19,11 +23,14 @@ const Home: React.FC = () => {
     }, [suggest])
 
     const fetchMoreData = () => {
+        console.log('FADIL');
+
         UseFetch(`pokemon?limit=10&offset=${offset + 10}`)
             .then((res) => {
                 setOffset(offset + 10)
                 setData([...data, ...res.data.results])
             })
+
     }
 
     const handleSearch = (e: any) => {
@@ -58,7 +65,7 @@ const Home: React.FC = () => {
                         {
                             data.map((e: any, i: number) => {
                                 return (
-                                    <Card key={i} data={e} />
+                                    <Card key={i} data={e} index={i} />
                                 )
                             })
                         }

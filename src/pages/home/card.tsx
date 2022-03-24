@@ -5,10 +5,20 @@ import generateColor from '../../utils/generateColor'
 import generateColorType from '../../utils/generateColorType'
 import { CardPoke, List, Type, TitleCard, Img } from './styled'
 
-export default function Card({ data }: any) {
+export default function Card({ data, index }: any) {
     const [poke, setPoke] = useState<any>()
     const navigate = useNavigate()
     const color = generateColor(poke ? poke?.types[0]?.type.name : 'gray')
+
+    if (index === 0 && localStorage.getItem('_cap_network')) {
+        localStorage.removeItem('_cap_pokemon')
+    }
+    if (localStorage.getItem('_cap_pokemon')) {
+        const dataLocal = JSON.parse(`${localStorage.getItem('_cap_pokemon')}`)
+        localStorage.setItem('_cap_pokemon', JSON.stringify([...dataLocal, poke]))
+    } else {
+        localStorage.setItem('_cap_pokemon', JSON.stringify([poke]))
+    }
 
     useEffect(() => {
         axios.get(data?.url)
