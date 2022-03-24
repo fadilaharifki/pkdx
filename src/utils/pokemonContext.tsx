@@ -15,11 +15,12 @@ export const Network = ({ children }: any) => {
         window.addEventListener('online', (event) => {
             console.log("You are now connected to the network.");
             // navigate('/')
+            window.location.reload();
             localStorage.setItem('_cap_network', JSON.stringify(true))
         });
         window.addEventListener('offline', (event) => {
             console.log("You are now not connected to the network.");
-            // navigate('/')
+            window.location.reload();
             localStorage.setItem('_cap_network', JSON.stringify(false))
         });
         if (navigator.onLine) {
