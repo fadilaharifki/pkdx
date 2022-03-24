@@ -8,12 +8,13 @@ import generateColorType from '../../utils/generateColorType';
 export default function Detail() {
     const location: any = useLocation();
     const [data, setData] = useState<any>()
+    const [name, setName] = useState<any>(location?.state)
 
     console.log(data);
 
 
     useEffect(() => {
-        UseFetch(`pokemon/${location?.state}`)
+        UseFetch(`pokemon/${name}`)
             .then((res) => {
                 setData(res.data)
             })
