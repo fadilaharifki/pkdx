@@ -74,6 +74,10 @@ export const Type = styled.div`
     background: ${(props) => props.color};
     margin-right: 5px;
     text-transform: capitalize;
+
+    @media screen and (max-width: 374px) {
+        font-size:13px;
+    }
 `
 export const Input = styled.input`
     padding: 10px 20px;

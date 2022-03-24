@@ -7,10 +7,7 @@ import CardSkeleton from "../../components/skeleton/card";
 import ModeOffline from "../../components/offlineMode";
 
 const Home: React.FC = () => {
-    // const [data, setData] = useState<any>([])
-    const [data, setData] = useState<any>(JSON.parse(`${localStorage.getItem('_cap_network')}`) ? [] : JSON.parse(`${localStorage.getItem('_cap_pokemon')}`))
-    // const [daats, setDatas] = useState<any>(JSON.parse(`${localStorage.getItem('_cap_network')}`) ? true : false)
-    // console.log(data, 'daats');
+    const [data, setData] = useState<any>([])
 
     const [offset, setOffset] = useState(0)
     const [suggest, setSuggest] = useState<any>([])
