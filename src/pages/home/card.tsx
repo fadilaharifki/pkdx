@@ -11,7 +11,7 @@ export default function Card({ data }: any) {
     const color = generateColor(poke ? poke?.types[0]?.type.name : 'gray')
 
     useEffect(() => {
-        axios.get(data.url)
+        axios.get(data?.url)
             .then((res) => {
                 setPoke(res.data)
             })
