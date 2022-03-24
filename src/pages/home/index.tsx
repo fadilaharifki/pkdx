@@ -10,7 +10,7 @@ const Home: React.FC = () => {
     const [suggest, setSuggest] = useState<any>([])
 
     useEffect(() => {
-        UseFetch(`pokemon?limit=10&offset=${offset}`)
+        UseFetch(`pokemon?limit=10&offset=0`)
             .then((res) => {
                 setData(res.data.results)
             })

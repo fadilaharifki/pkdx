@@ -4,7 +4,6 @@ import { ContainerDetail, List, Type, TitleDetail, Layout, LayoutTop, TitleBotto
 import { useLocation } from 'react-router-dom';
 import generateColor from '../../utils/generateColor';
 import generateColorType from '../../utils/generateColorType';
-import { BASE_URL_ANIMATE } from '../../utils/URL';
 
 export default function Detail() {
     const location: any = useLocation();
@@ -14,7 +13,7 @@ export default function Detail() {
 
 
     useEffect(() => {
-        UseFetch(`pokemon/${location.state}`)
+        UseFetch(`pokemon/${location?.state}`)
             .then((res) => {
                 console.log(res.data);
                 setData(res.data)
