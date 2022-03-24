@@ -1,6 +1,5 @@
 import { Container, ContainerMobile } from './styled'
 import './App.css';
-// import NavBar from './components/navbar';
 import Routes from './routes';
 
 function App() {
@@ -8,8 +7,6 @@ function App() {
     <Container>
       <ContainerMobile>
         <Routes />
-
-        {/* <NavBar /> */}
       </ContainerMobile>
     </Container>
   );
