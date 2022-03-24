@@ -13,6 +13,8 @@ const Home: React.FC = () => {
         UseFetch(`pokemon?limit=10&offset=0`)
             .then((res) => {
                 setData(res.data.results)
+            }).catch((err) => {
+
             })
     }, [suggest])
 
