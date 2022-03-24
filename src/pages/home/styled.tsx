@@ -154,7 +154,9 @@ export const Bar2 = styled.div<StyledStatProps>`
 `
 
 export const TitleChart = styled.div`
-    width:100px
+    width:80%;
+    text-transform: capitalize;
+    padding: 3px 0;
 `
 export const NumberChart = styled.div`
     font-weight:bold;
