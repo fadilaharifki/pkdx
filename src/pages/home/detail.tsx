@@ -57,8 +57,8 @@ export default function Detail() {
             </LayoutTop>
             <Layout>
                 <NavBarBottom>
-                    <TitleBottom color={flagStat ? generateColorType(data?.types[0]?.type.name) : "black"} onClick={() => { setFlagStat(true); setFlagAbility(false) }}>Statistic</TitleBottom>
-                    <TitleBottom color={flagAbility ? generateColorType(data?.types[0]?.type.name) : "black"} onClick={() => { setFlagStat(false); setFlagAbility(true) }}>Ability</TitleBottom>
+                    <TitleBottom color={flagStat ? generateColorType(data?.types[0]?.type.name) : "#8f8f8f"} onClick={() => { setFlagStat(true); setFlagAbility(false) }}>Statistic</TitleBottom>
+                    <TitleBottom color={flagAbility ? generateColorType(data?.types[0]?.type.name) : "#8f8f8f"} onClick={() => { setFlagStat(false); setFlagAbility(true) }}>Ability</TitleBottom>
                 </NavBarBottom>
                 {
                     flagStat && (
