@@ -20,12 +20,7 @@ export const Network = ({ children }: AuxProps) => {
             window.location.reload();
             localStorage.setItem('_cap_network', JSON.stringify(false))
         });
-        if (navigator.onLine) {
-            localStorage.setItem('_cap_network', JSON.stringify(true))
-        } else {
-            localStorage.setItem('_cap_network', JSON.stringify(false))
-        }
-    }, [navigator])
+    }, [])
 
     return (
         <>

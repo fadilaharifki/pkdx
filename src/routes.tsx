@@ -5,7 +5,7 @@ import Home from "./pages/home";
 import Detail from "./pages/home/detail";
 
 const Routes = () => {
-    const location: any = useLocation();
+    const location = useLocation();
     useEffect(() => {
         if (location.pathname !== "/") {
             window.scroll(0, 0);
