@@ -36,6 +36,16 @@ export default function Detail() {
         detail()
     }, [])
 
+    const toAbout = () => {
+        setFlagAbout(true)
+        setFlagStat(false)
+    }
+
+    const toStat = () => {
+        setFlagAbout(false)
+        setFlagStat(true)
+    }
+
     return (
         <ContainerDetail color={generateColor(data?.types[0]?.type.name)}>
             <LayoutTop>
@@ -60,8 +70,8 @@ export default function Detail() {
             </LayoutTop>
             <Layout>
                 <NavBarBottom>
-                    <TitleBottom color={flagAbout ? generateColorType(data?.types[0]?.type.name) : "#8f8f8f"} onClick={() => { setFlagAbout(true); setFlagStat(false) }}>About</TitleBottom>
-                    <TitleBottom color={flagStat ? generateColorType(data?.types[0]?.type.name) : "#8f8f8f"} onClick={() => { setFlagAbout(false); setFlagStat(true) }}>Statistic</TitleBottom>
+                    <TitleBottom color={flagAbout ? generateColorType(data?.types[0]?.type.name) : "#8f8f8f"} onClick={toAbout}>About</TitleBottom>
+                    <TitleBottom color={flagStat ? generateColorType(data?.types[0]?.type.name) : "#8f8f8f"} onClick={toStat}>Statistic</TitleBottom>
                 </NavBarBottom>
                 {
                     flagStat && (

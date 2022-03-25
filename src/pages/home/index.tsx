@@ -13,6 +13,8 @@ const Home: React.FC = () => {
     const [suggest, setSuggest] = useState<Array<IItem>>([])
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
+    let network = JSON.parse(`${localStorage.getItem('_cap_network')}`)
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -31,13 +33,15 @@ const Home: React.FC = () => {
                 setOffset(offset + 10)
                 setData([...data, ...res.data.results])
             })
-            .catch((err) => {
+            .catch(() => {
                 setIsLoading(true)
             })
 
     }
 
     const handleSearch = (e: any) => {
+        // console.log(e);
+
         const dataPokemon = [...data]
         let suggestion: Array<IItem> = []
         if (e.target.value.length > 0) {
@@ -59,8 +63,6 @@ const Home: React.FC = () => {
                     <ContainerCard>
                         {
                             suggest.map((e: IItem, i: number) => {
-                                console.log(e);
-
                                 return (
                                     <Card key={i} data={e} />
                                 )
@@ -90,7 +92,7 @@ const Home: React.FC = () => {
             >
             </InfiniteScroll>
             {
-                JSON.parse(`${localStorage.getItem('_cap_network')}`) === false && <ModeOffline />
+                network === false && <ModeOffline />
             }
         </Section>
     )
