@@ -5,13 +5,13 @@ import { UseFetch } from "../../utils/pokemonContext";
 import Card from "./card";
 import CardSkeleton from "../../components/skeleton/card";
 import ModeOffline from "../../components/offlineMode";
+import { IItem } from "../../utils/interface";
 
 const Home: React.FC = () => {
-    const [data, setData] = useState<any>([])
-
-    const [offset, setOffset] = useState(0)
-    const [suggest, setSuggest] = useState<any>([])
-    const [isLoading, setIsLoading] = useState(false)
+    const [data, setData] = useState<Array<IItem>>([])
+    const [offset, setOffset] = useState<number>(0)
+    const [suggest, setSuggest] = useState<Array<IItem>>([])
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -39,7 +39,7 @@ const Home: React.FC = () => {
 
     const handleSearch = (e: any) => {
         const dataPokemon = [...data]
-        let suggestion = []
+        let suggestion: Array<IItem> = []
         if (e.target.value.length > 0) {
             suggestion = dataPokemon.filter((el) => el.name.toLowerCase().includes(e.target.value.toLowerCase()))
         }
@@ -58,7 +58,9 @@ const Home: React.FC = () => {
                 suggest.length ? (
                     <ContainerCard>
                         {
-                            suggest.map((e: any, i: number) => {
+                            suggest.map((e: IItem, i: number) => {
+                                console.log(e);
+
                                 return (
                                     <Card key={i} data={e} />
                                 )
@@ -68,9 +70,9 @@ const Home: React.FC = () => {
                 ) : (
                     <ContainerCard>
                         {
-                            data.map((e: any, i: number) => {
+                            data.map((e: IItem, i: number) => {
                                 return (
-                                    <Card key={i} data={e} index={i} />
+                                    <Card key={i} data={e} />
                                 )
                             })
                         }

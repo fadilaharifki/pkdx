@@ -6,11 +6,21 @@ import generateColor from '../../utils/generateColor';
 import generateColorType from '../../utils/generateColorType';
 import { AiOutlineClose } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
+import { IAbilities, IPoke, IStats, ITypes } from '../../utils/interface';
+
+interface ILocation {
+    hash: string,
+    key: string,
+    pathname: string,
+    search: string,
+    state: any,
+}
 
 export default function Detail() {
     const navigate = useNavigate()
-    const location: any = useLocation();
+    const location: ILocation = useLocation();
     const [data, setData] = useState<any>()
+
     const [flagStat, setFlagStat] = useState(true)
     const [flagAbility, setFlagAbility] = useState(false)
 
@@ -31,7 +41,7 @@ export default function Detail() {
                         <TitleDetail>{data?.name}</TitleDetail>
                         <List>
                             {
-                                data?.types?.map((e: any, i: number) => {
+                                data?.types?.map((e: ITypes, i: number) => {
                                     return (
                                         <Type color={generateColorType(e.type.name)} key={i}>{e.type.name}</Type>
                                     )
@@ -54,7 +64,7 @@ export default function Detail() {
                     flagStat && (
                         <>
                             {
-                                data?.stats.map((e: any, i: number) => {
+                                data?.stats.map((e: IStats, i: number) => {
                                     return (
                                         <ContainerChart key={i}>
                                             <TitleStat>
@@ -79,7 +89,7 @@ export default function Detail() {
                     flagAbility && (
                         <ContainerAbility >
                             {
-                                data.abilities.map((e: any, i: number) => {
+                                data.abilities.map((e: IAbilities, i: number) => {
                                     return (
                                         <PositionAbility key={i}>
                                             {e.ability.name}
