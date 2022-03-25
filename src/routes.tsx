@@ -14,8 +14,6 @@ const Routes = () => {
 
     return (
         <ReactRoutes>
-            {/* <Route path="/detailpokemon" element={<DetailPokemon />} />
-            <Route path="/mypokemon" element={<MyPokemon />} /> */}
             <Route path={`/pokemon/${location?.state}`} element={<Detail />} />
             <Route path="/" element={<Home />} />
         </ReactRoutes>

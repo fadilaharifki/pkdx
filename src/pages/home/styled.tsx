@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 
 interface StyledStatProps {
-    size?: number
+    size: number
 }
 
 export const Section = styled.section`
@@ -156,10 +156,10 @@ export const Bar = styled.div`
 
 export const Bar2 = styled.div<StyledStatProps>`
     box-sizing: border-box;
-    width: ${(props: any) => `${props.size}%`};
+    width: ${(props) => `${props.size}%`};
     height: 10px;
     border-radius:20px;
-    background: ${(props: any) => `${props.size > 50 ? "green" : "orange"}`};
+    background: ${(props) => `${props.size > 50 ? "green" : "orange"}`};
 `
 
 export const TitleChart = styled.div`

@@ -39,13 +39,12 @@ const Home: React.FC = () => {
 
     }
 
-    const handleSearch = (e: any) => {
-        // console.log(e);
-
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         const dataPokemon = [...data]
         let suggestion: Array<IItem> = []
         if (e.target.value.length > 0) {
-            suggestion = dataPokemon.filter((el) => el.name.toLowerCase().includes(e.target.value.toLowerCase()))
+            suggestion = dataPokemon.filter((el: IItem) => el.name.toLowerCase().includes(e.target.value.toLowerCase())
+            )
         }
         setSuggest(suggestion);
     }

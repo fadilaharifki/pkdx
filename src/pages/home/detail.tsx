@@ -6,7 +6,7 @@ import generateColor from '../../utils/generateColor';
 import generateColorType from '../../utils/generateColorType';
 import { AiOutlineClose } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
-import { IAbilities, IStats, ITypes } from '../../utils/interface';
+import { IAbilities, IPoke, IStats, ITypes } from '../../utils/interface';
 
 interface ILocation {
     hash: string,
@@ -16,11 +16,33 @@ interface ILocation {
     state: any,
 }
 
+interface IPokeSpecies {
+    flavor_text_entries: Array<IFlavorTextEntries>
+}
+
+interface IFlavorTextEntries {
+    flavor_text: string,
+    language: ILanguage,
+    version: IVersion,
+}
+
+interface ILanguage {
+    name: string,
+    ulr: string
+}
+
+interface IVersion {
+    name: string,
+    ulr: string
+}
+
 export default function Detail() {
     const navigate = useNavigate()
     const location: ILocation = useLocation();
-    const [data, setData] = useState<any>()
-    const [about, setAbout] = useState<any>()
+    const [data, setData] = useState<IPoke>()
+    const color = generateColor(data ? data?.types[0]?.type.name : '#8f8f8f')
+
+    const [about, setAbout] = useState<IPokeSpecies>()
 
     const [flagAbout, setFlagAbout] = useState(true)
     const [flagStat, setFlagStat] = useState(false)
@@ -47,7 +69,7 @@ export default function Detail() {
     }
 
     return (
-        <ContainerDetail color={generateColor(data?.types[0]?.type.name)}>
+        <ContainerDetail color={generateColor(color)}>
             <LayoutTop>
                 <Top>
                     <div>
@@ -70,8 +92,8 @@ export default function Detail() {
             </LayoutTop>
             <Layout>
                 <NavBarBottom>
-                    <TitleBottom color={flagAbout ? generateColorType(data?.types[0]?.type.name) : "#8f8f8f"} onClick={toAbout}>About</TitleBottom>
-                    <TitleBottom color={flagStat ? generateColorType(data?.types[0]?.type.name) : "#8f8f8f"} onClick={toStat}>Statistic</TitleBottom>
+                    <TitleBottom color={flagAbout ? generateColorType(color) : "#8f8f8f"} onClick={toAbout}>About</TitleBottom>
+                    <TitleBottom color={flagStat ? generateColorType(color) : "#8f8f8f"} onClick={toStat}>Statistic</TitleBottom>
                 </NavBarBottom>
                 {
                     flagStat && (
