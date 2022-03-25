@@ -8,14 +8,6 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 import { IAbilities, IPoke, IStats, ITypes } from '../../utils/interface';
 
-interface ILocation {
-    hash: string,
-    key: string,
-    pathname: string,
-    search: string,
-    state: any,
-}
-
 interface IPokeSpecies {
     flavor_text_entries: Array<IFlavorTextEntries>
 }
@@ -38,7 +30,8 @@ interface IVersion {
 
 export default function Detail() {
     const navigate = useNavigate()
-    const location: ILocation = useLocation();
+    const location = useLocation();
+
     const [data, setData] = useState<IPoke>()
     const color = generateColor(data ? data?.types[0]?.type.name : '#8f8f8f')
 
