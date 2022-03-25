@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { UseFetch } from '../../utils/pokemonContext'
-import { ContainerDetail, List, Type, TitleDetail, Layout, LayoutTop, TitleBottom, ContainerAbility, PositionAbility, NavBarBottom, ImgAnimate, ContainerImage, ContainerChart, TitleStat, TitleChart, Bar, Bar2, NumberChart, Top } from './styled'
+import { ContainerDetail, List, Type, TitleDetail, Layout, TextAbout, Desc, TextAbouTitle, TextAbilities, ContainerAbout, LayoutTop, TitleBottom, ContainerAbility, NavBarBottom, ImgAnimate, ContainerImage, ContainerChart, TitleStat, TitleChart, Bar, Bar2, NumberChart, Top } from './styled'
 import { useLocation } from 'react-router-dom';
 import generateColor from '../../utils/generateColor';
 import generateColorType from '../../utils/generateColorType';
 import { AiOutlineClose } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
-import { IAbilities, IPoke, IStats, ITypes } from '../../utils/interface';
+import { IAbilities, IStats, ITypes } from '../../utils/interface';
 
 interface ILocation {
     hash: string,
@@ -20,13 +20,16 @@ export default function Detail() {
     const navigate = useNavigate()
     const location: ILocation = useLocation();
     const [data, setData] = useState<any>()
+    const [about, setAbout] = useState<any>()
 
-    const [flagStat, setFlagStat] = useState(true)
-    const [flagAbility, setFlagAbility] = useState(false)
+    const [flagAbout, setFlagAbout] = useState(true)
+    const [flagStat, setFlagStat] = useState(false)
 
     useEffect(() => {
         const detail = async () => {
             const res = await UseFetch(`pokemon/${location.state}`)
+            const resSpecies = await UseFetch(`pokemon-species/${location.state}`)
+            setAbout(resSpecies.data)
             setData(res.data)
         }
 
@@ -57,8 +60,8 @@ export default function Detail() {
             </LayoutTop>
             <Layout>
                 <NavBarBottom>
-                    <TitleBottom color={flagStat ? generateColorType(data?.types[0]?.type.name) : "#8f8f8f"} onClick={() => { setFlagStat(true); setFlagAbility(false) }}>Statistic</TitleBottom>
-                    <TitleBottom color={flagAbility ? generateColorType(data?.types[0]?.type.name) : "#8f8f8f"} onClick={() => { setFlagStat(false); setFlagAbility(true) }}>Ability</TitleBottom>
+                    <TitleBottom color={flagAbout ? generateColorType(data?.types[0]?.type.name) : "#8f8f8f"} onClick={() => { setFlagAbout(true); setFlagStat(false) }}>About</TitleBottom>
+                    <TitleBottom color={flagStat ? generateColorType(data?.types[0]?.type.name) : "#8f8f8f"} onClick={() => { setFlagAbout(false); setFlagStat(true) }}>Statistic</TitleBottom>
                 </NavBarBottom>
                 {
                     flagStat && (
@@ -86,18 +89,32 @@ export default function Detail() {
                     )
                 }
                 {
-                    flagAbility && (
-                        <ContainerAbility >
-                            {
-                                data.abilities.map((e: IAbilities, i: number) => {
-                                    return (
-                                        <PositionAbility key={i}>
-                                            {e.ability.name}
-                                        </PositionAbility>
-                                    )
-                                })
-                            }
-                        </ContainerAbility>
+                    flagAbout && (
+                        <div>
+                            <Desc>{about?.flavor_text_entries[0]?.flavor_text}</Desc>
+                            <ContainerAbout>
+                                <div>
+                                    <TextAbouTitle>Height</TextAbouTitle>
+                                    <TextAbouTitle>Weight</TextAbouTitle>
+                                    <TextAbouTitle>Ability</TextAbouTitle>
+                                </div>
+                                <div>
+                                    <TextAbout> {data?.height} (m)</TextAbout>
+                                    <TextAbout> {data?.weight} (kg)</TextAbout>
+                                    <ContainerAbility >
+                                        {
+                                            data?.abilities.map((e: IAbilities, i: number) => {
+                                                return (
+                                                    <TextAbilities key={i}>
+                                                        {e.ability.name}
+                                                    </TextAbilities>
+                                                )
+                                            })
+                                        }
+                                    </ContainerAbility>
+                                </div>
+                            </ContainerAbout>
+                        </div>
                     )
                 }
             </Layout>

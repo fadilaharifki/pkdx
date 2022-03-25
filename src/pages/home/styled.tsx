@@ -212,9 +212,40 @@ export const ContainerAbility = styled.div`
     justify-content: start;
     align-items:center;
     width: 100%;
+    padding-left:8px;
 `
 export const Top = styled.div`
     display: flex;  
     flex-direction:row;
     justify-content: space-between;
+`
+export const ContainerAbout = styled.div`
+    display: flex;  
+    flex-direction:row;
+    margin-top:20px;
+`
+
+export const TextAbouTitle = styled.div`
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+`
+
+export const TextAbout = styled.div`
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+`
+
+export const TextAbilities = styled.div`
+    padding: 10px 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: capitalize;
+`
+
+export const Desc = styled.div`
+    font-family: Arial, Helvetica, sans-serif;
 `
