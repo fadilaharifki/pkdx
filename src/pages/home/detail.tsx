@@ -85,8 +85,8 @@ export default function Detail() {
             </LayoutTop>
             <Layout>
                 <NavBarBottom>
-                    <TitleBottom color={flagAbout ? generateColorType(color) : "#8f8f8f"} onClick={toAbout}>About</TitleBottom>
-                    <TitleBottom color={flagStat ? generateColorType(color) : "#8f8f8f"} onClick={toStat}>Statistic</TitleBottom>
+                    <TitleBottom color={flagAbout ? color : "#8f8f8f"} onClick={toAbout}>About</TitleBottom>
+                    <TitleBottom color={flagStat ? color : "#8f8f8f"} onClick={toStat}>Statistic</TitleBottom>
                 </NavBarBottom>
                 {
                     flagStat && (
