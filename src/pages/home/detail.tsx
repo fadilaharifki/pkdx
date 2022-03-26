@@ -62,7 +62,7 @@ export default function Detail() {
     }
 
     return (
-        <ContainerDetail color={generateColor(color)}>
+        <ContainerDetail color={color}>
             <LayoutTop>
                 <Top>
                     <div>
