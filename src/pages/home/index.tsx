@@ -60,7 +60,7 @@ const Home: React.FC = () => {
       <ContainerSearch>
         <Input onChange={handleSearch} placeholder="Search pokemon" type="text" />
       </ContainerSearch>
-      <Text>Pokédex ({suggest.length && valueSearch.length ? suggest.length : !suggest.length && valueSearch.length ? suggest.length : data.length})</Text>
+      <Text>Pokédex ({suggest.length && valueSearch.length ? suggest.length : !suggest.length && valueSearch.length ? "0" : data.length})</Text>
       <CardSkeleton loading={isLoading} />
       {suggest.length && valueSearch.length ? (
         <ContainerCard>
