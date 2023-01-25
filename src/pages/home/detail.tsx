@@ -118,7 +118,6 @@ export default function Detail() {
               src={data?.sprites?.other?.["official-artwork"].front_default} // use normal <img> attributes as props
               width={"100%"}
             />
-            {/* <ImgAnimate src={data?.sprites?.other?.["official-artwork"].front_default} width={350} alt="animate" /> */}
           </ContainerImage>
         </LayoutTop>
         <Layout>

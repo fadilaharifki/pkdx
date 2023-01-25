@@ -9,6 +9,7 @@ import { IItem } from "../../utils/interface";
 import ReactLoading from "react-loading";
 import Lottie from "lottie-react";
 import nodata from "./nodata.json";
+
 const Home: React.FC = () => {
   const [data, setData] = useState<Array<IItem>>([]);
   const [offset, setOffset] = useState<number>(0);

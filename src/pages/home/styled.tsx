@@ -87,8 +87,14 @@ export const Input = styled.input`
   margin: 8px 0;
   border-radius: 10px;
   outline: none;
-  border: 1px solid;
+  border: 1px solid green;
   width: 75%;
+  &:focus {
+    border: 2px solid rgb(80, 200, 255);
+    box-shadow: 2px 1px 31px 2px rgba(80, 200, 255, 0.53);
+    -webkit-box-shadow: 2px 1px 31px 2px rgba(80, 200, 255, 0.53);
+    -moz-box-shadow: 2px 1px 31px 2px rgba(80, 200, 255, 0.53);
+  }
 `;
 
 export const ContainerSearch = styled.div`
